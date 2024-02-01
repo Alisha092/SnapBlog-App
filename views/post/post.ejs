@@ -1,0 +1,76 @@
+<% layout('layouts/boilerplate') %>
+<div class="container my-3">
+  <%- include('../partials/flash')%>
+
+  <% if(currentUser.username === post.author.username) {%>
+  <div class="card p-3 mb-3">
+    <h5 class="d-flex align-items-center">
+      What do you want to do?
+      <a href="/posts/<%=post._id%>/edit" class="btn btn-warning btn-sm mx-2">Edit Post</a>
+      <form action="/posts/<%=post._id%>?_method=DELETE" method="post"><button class="btn btn-danger btn-sm mx-2">Delete Post</button></form>
+    </h5>
+  </div>
+  <% } %>
+
+  <div class="card p-2" style="width: 100%;">
+
+    <img class="card-img-top" src="https://images.twinkl.co.uk/tw1n/image/private/t_630/u/ux/horizontal-wiki_ver_1.png" alt="Card image cap" style="max-width: 100%; max-height: 300px;">
+
+    <div class="card-body">
+
+      <h3 class="card-title"><%= post.topic %></h3>
+      <p class="card-text"><%= post.text %></p>
+
+    </div>
+
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <i class="fa-solid fa-eye"></i> <%= post.views %> |
+        <i class="fa-solid fa-comment"></i> <%= post.comments.length %>
+      </li>
+      <li class="list-group-item"><i class="fa-solid fa-user"></i> <%= post.author.username %></li>
+    </ul>
+
+    <div class="card-body">
+
+      <% if(currentUser.username === 'guest') {%>
+
+      <div class="text-center"><a href="/login">Login</a> / <a href="/register">Register</a> to make comments</div>
+      <% } else {%>
+
+      <form action="/posts/<%=post._id%>/comment" method="post">
+
+        <div class="form-group mb-3">
+          <label for="text" class="mb-1">Write a Comment</label>
+          <textarea class="form-control" id="text" name="comment[text]" rows="3"></textarea>
+        </div>
+
+        <button class="btn submit-btn">Add Comment</button>
+      </form>
+
+      <% } %>
+
+    </div>
+
+    <div class="card-body">
+
+      <h3 class="card-title">Comments</h3>
+      <% for (let i = post.comments.length - 1; i >= 0; i--) {%>
+
+      <div class="card comment-box mb-3">
+        <div class="card-header d-flex justify-content-between">
+          <div class=""><%= post.comments[i].user.username %></div>
+          <div class=""><%= formatDate(new Date(post.comments[i].date)) %></div>
+        </div>
+        <div class="card-body text-dark">
+          <p class="card-text"><%= post.comments[i].text %></p>
+        </div>
+      </div>
+
+      <% } %>
+
+    </div>
+
+  </div>
+
+</div>

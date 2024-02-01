@@ -1,0 +1,22 @@
+<% layout('layouts/boilerplate') %>
+<div class="container my-3">
+  <%- include('partials/flash')%>
+
+  <% for (let post of posts) {%>
+  <div class="card border-dark mb-3">
+    <div class="card-body">
+      <h5 class="card-title"><%= post.topic %></h5>
+      <p class="card-text"><%= trimText(post.text, 150) %></p>
+    </div>
+    <div class="card-footer d-flex justify-content-between">
+      <small class="text-muted">
+        <i class="fa-solid fa-eye"></i> <%= post.views %>
+        |
+        <i class="fa-solid fa-comment"></i> <%= post.comments.length %>
+      </small>
+      <a href="/posts/<%=post._id%>" class="btn btn-sm btn-dark">See Post</a>
+    </div>
+  </div>
+  <% } %>
+
+</div>

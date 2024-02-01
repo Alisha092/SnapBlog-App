@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>All Posts (<%= userPosts.length %>)</h1>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">View</th>
+        <th scope="col">Post</th>
+        <th scope="col"><i class="fa-solid fa-eye"></i></th>
+        <th scope="col"><i class="fa-solid fa-comment"></i></th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% for (let i = 0; i < userPosts.length; i++) { %>
+        <tr>
+          <th scope="row"><a href="/posts/<%=userPosts[i]._id%>"><i class="fa-solid fa-rocket"></i></a></th>
+          <td><%= userPosts[i].topic %></td>
+          <td><%= userPosts[i].views %></td>
+          <td><%= userPosts[i].comments.length %></td>
+        </tr>
+      <% } %>
+
+    </tbody>
+  </table>
+
+</div>
+

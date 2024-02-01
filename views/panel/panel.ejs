@@ -1,0 +1,47 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="main-container d-flex">
+  <%- include('sidebar')%>
+  <div class="content">
+    <nav class="navbar navbar-expand-md navbar-light bg-light d-md-none">
+      <div class="container-fluid">
+        <div class="d-flex justify-content-between d-md-none d-block">
+          <button class="btn px-1 py-0 open-btn me-2"><i class="fa-solid fa-bars-staggered"></i></button>
+
+        </div>
+      </div>
+    </nav>
+
+    <div class="dashboard-content px-3 pt-4 ">
+      <%- include('../partials/flash')%>
+
+      <% if (target === 'dashboard') { %>
+
+      <%- include('dashboard') %>
+
+      <% } else if (target === 'newPost') { %>
+
+      <%- include('newPost') %>
+
+      <% } else if (target === 'posts') { %>
+
+      <%- include('posts') %>
+
+      <% } else if (target === 'comments') { %>
+
+      <%- include('comments') %>
+
+      <% } else if (target === 'settings') { %>
+
+      <%- include('settings') %>
+
+      <% } else { %>
+
+      <%- include('dashboard') %>
+
+      <% } %>
+
+    </div>
+
+  </div>
+</div>

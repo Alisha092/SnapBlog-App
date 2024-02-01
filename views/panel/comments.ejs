@@ -1,0 +1,30 @@
+<% for(let post of userPosts) {%>
+
+<div class="p-2 mb-2">
+  <h4><%=post.topic%> <a href="/posts/<%=post._id%>"><i class="fa-solid fa-share-from-square"></i></a></h4>
+
+  <% if(post.comments && post.comments.length) {%>
+  <table class="table">
+    <tbody>
+      <% for(let comment of post.comments) {%>
+
+      <tr>
+        <td><%=comment.user.username%></td>
+        <td><%=comment.text%></td>
+        <td><%=formatDate(new Date(comment.date))%></td>
+      </tr>
+
+      <% } %>
+    </tbody>
+  </table>
+  <% } else {%>
+  
+    <div class="card p-3">
+        <h5>No Comments yet!</h5>
+    </div>
+    <% } %>
+
+  <hr>
+</div>
+
+<% } %>

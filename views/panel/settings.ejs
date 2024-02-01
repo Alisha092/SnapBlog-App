@@ -1,0 +1,25 @@
+<div class="container my-2">
+
+  <div class="form-container">
+    <%- include('../partials/flash')%>
+
+    <h2>Change Password</h2><hr>
+    <form action="/user/panel/settings/change-password" method="POST" class="validated-form" novalidate>
+      <div class="mb-3">
+        <label class="form-label" for="currentPassword">Current Password</label>
+        <input class="form-control" type="password" id="currentPassword" name="currentPassword" required />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="newPassword">New Password</label>
+        <input class="form-control" type="password" id="newPassword" name="newPassword" required />
+      </div>
+
+      <button class="btn btn-dark">Change Password</button>
+
+    </form>
+
+
+  </div>
+  
+</div>
