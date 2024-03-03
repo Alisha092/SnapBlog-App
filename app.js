@@ -20,7 +20,7 @@ const authRoutes = require('./router/auth');
 const panelRoutes = require('./router/panel');
 const postRoutes = require('./router/post');
 
-mongoose.connect("mongodb://root:P0QLX9aA7ORSwzaVv1YD5MMS@db-snap-blog:27017/my-app?authSource=admin");
+mongoose.connect("mongodb://localhost:27017/SnapBlog");
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error: "));
 db.once("open", () => console.log("Database connected"));
